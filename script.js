@@ -56,8 +56,48 @@ function renderMusicas(filtro) {
             card.querySelector('.curtir-btn').classList.toggle('curtido');
         });
 
-        card.querySelector('.tocar-btn').addEventListener('click', () => {
-            alert(`Tocando ${m.titulo} - ${m.artista}`);
+        card.querySelector('.tocar-btn').addEventListener('click', (e) => {
+            const btn = e.target;
+            const cards = document.querySelectorAll('.musica-card');
+            
+            // Reseta todos os botões
+            cards.forEach(c => {
+                const b = c.querySelector('.tocar-btn');
+                b.textContent = '▶️ Tocar';
+                b.classList.remove('tocando');
+                c.classList.remove('playing');
+            });
+
+            // Ativa o botão clicado
+            if (!btn.classList.contains('tocando')) {
+                btn.textContent = '⏸️ Pausar';
+                btn.classList.add('tocando');
+                card.classList.add('playing');
+                
+                // Simula tocando música
+                const playerInfo = document.getElementById('player-info');
+                if (playerInfo) {
+                    playerInfo.innerHTML = `
+                        <div class="now-playing">
+                            <img src="${m.capaUrl}" alt="${m.titulo}">
+                            <div class="track-info">
+                                <span class="track-title">${m.titulo}</span>
+                                <span class="track-artist">${m.artista}</span>
+                            </div>
+                            <div class="player-controls">
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <span class="time">0:00 / 3:30</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                btn.textContent = '▶️ Tocar';
+                btn.classList.remove('tocando');
+                card.classList.remove('playing');
+            }
         });
 
         lista.appendChild(card);
@@ -74,6 +114,26 @@ function filtrarPorTexto(termo) {
 }
 
 // Inicialização
+// Função para animar a barra de progresso
+function animateProgress() {
+    const progress = document.querySelector('.progress');
+    if (progress) {
+        let width = 0;
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                const tocando = document.querySelector('.tocando');
+                if (tocando) {
+                    tocando.click(); // Para a música automaticamente
+                }
+            } else {
+                width++;
+                progress.style.width = width + '%';
+            }
+        }, 100); // Aproximadamente 3:30 minutos
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderMusicas(); // renderiza todas inicialmente
 

@@ -152,15 +152,89 @@ header h1 {
     font-weight: 500;
 }
 
-/* Footer */
+/* Footer e Player */
 footer {
     background-color: #181818;
     color: #B3B3B3;
-    text-align: center;
     padding: 1rem;
     position: fixed;
     bottom: 0;
     width: 100%;
+    text-align: center;
+}
+
+#player-info {
+    margin-bottom: 1rem;
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #282828;
+}
+
+.now-playing img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+}
+
+.track-info {
+    flex: 1;
+    text-align: left;
+}
+
+.track-title {
+    color: white;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.track-artist {
+    color: #B3B3B3;
+    font-size: 0.9rem;
+}
+
+.player-controls {
+    flex: 2;
+    padding: 0 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #404040;
+    border-radius: 2px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.progress {
+    width: 30%;
+    height: 100%;
+    background-color: #1db954;
+    border-radius: 2px;
+    transition: width 1s linear;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: #B3B3B3;
+}
+
+.tocando {
+    background-color: #1db954 !important;
+}
+
+.playing {
+    border: 2px solid #1db954;
+    transform: scale(1.02);
 }
 
 /* Layout responsivo */

@@ -1,0 +1,159 @@
+/* Reset e estilos gerais */
+body {
+    background-color: #121212;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+}
+
+/* Header */
+header {
+    background-color: #282828;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    color: #9370DB;
+}
+
+/* Container flex para alinhar os cards */
+#lista-de-musicas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo do card */
+.musica-card {
+    background-color: #181818;
+    border-radius: 8px;
+    padding: 16px;
+    width: 180px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito hover no card */
+.musica-card:hover {
+    background-color: #282828;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem do card */
+.musica-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Textos do card */
+.musica-card h3 {
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.musica-card p {
+    color: #B3B3B3;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Barra de busca */
+.search-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+#busca {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 24px;
+    background-color: #282828;
+    color: white;
+    font-size: 16px;
+}
+
+#busca:focus {
+    outline: none;
+    background-color: #383838;
+    box-shadow: 0 0 0 2px #9370DB;
+}
+
+/* Botões */
+.botoes {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.curtir-btn,
+.tocar-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #282828;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    font-size: 14px;
+}
+
+.curtir-btn:hover,
+.tocar-btn:hover {
+    background-color: #383838;
+    transform: scale(1.05);
+}
+
+.curtir-btn.active {
+    color: #ff4081;
+}
+
+/* Footer */
+footer {
+    background-color: #181818;
+    color: #B3B3B3;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Layout responsivo */
+@media (max-width: 768px) {
+    #lista-de-musicas {
+        gap: 16px;
+        padding: 16px;
+    }
+    
+    .musica-card {
+        width: calc(50% - 32px);
+        min-width: 150px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .musica-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
